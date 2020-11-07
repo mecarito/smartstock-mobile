@@ -1,4 +1,4 @@
-# firstapp
+# Smartsock mobile
 
 A new Flutter project.
 
