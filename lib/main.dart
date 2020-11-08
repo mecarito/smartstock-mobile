@@ -1,35 +1,107 @@
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      title: 'Welcome to Flutter',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Smartstock Kenya'),
+        ),
+        body: Center(
+          child: Addition(),
+        ),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
+
+
+class Addition extends StatefulWidget {
+  @override
+  _AdditionState createState() => _AdditionState();
+}
+
+class _AdditionState extends State<Addition> {
+  var randomnames =[];
+
+  TextStyle bold24 = TextStyle(
+    color: Colors.green,
+    fontSize: 34,
+    fontWeight: FontWeight.w900
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    var fake = new Faker();
+    // int count = 0;
+    // int sum = count + 1;
+    for( var i= 0; i<=10; i++) {
+      randomnames.add( faker.person.name());
+    }
+    // return Text( faker.person.name() );
+    return container;
+
+  }
+  Widget _buildSuggestions() {
+    return ListView.builder(
+      itemBuilder: (context, i){
+        return container;
+      },
+    );
+  }
+
+  Widget list() {
+    return ListTile(
+      title: Text(randomnames[5], style: bold24),
+    );
+  }
+
+  var container = Container(
+    child: Center(
+      child: Text("lorem ipsum"),
+    ),
+
+    width: 100%,
+    height: 100%,
+    color: Colors.blue
+  );
+}
+
+
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         // This is the theme of your application.
+//         //
+//         // Try running your application with "flutter run". You'll see the
+//         // application has a blue toolbar. Then, without quitting the app, try
+//         // changing the primarySwatch below to Colors.green and then invoke
+//         // "hot reload" (press "r" in the console where you ran "flutter run",
+//         // or simply save your changes to "hot reload" in a Flutter IDE).
+//         // Notice that the counter didn't reset back to zero; the application
+//         // is not restarted.
+//         primarySwatch: Colors.green,
+//         // This makes the visual density adapt to the platform that you run
+//         // the app on. For desktop platforms, the controls will be smaller and
+//         // closer together (more dense) than on mobile platforms.
+//         visualDensity: VisualDensity.adaptivePlatformDensity,
+//       ),
+//       home: MyHomePage(title: 'Smartstock company'),
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -59,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter = _counter + 2;
     });
   }
 
