@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
           ],
         ),
         body: Center(
-          // child: Addition(),
-          child: Chatapp(),
+          child: Chatapp()
+          // child: Chatapp(),
         ),
 
         bottomNavigationBar: BottomNavigationBar(
@@ -108,7 +108,7 @@ class _AdditionState extends State<Addition> {
         Positioned( // red box
           child:  Container(
             child: Text(
-              "Flutter reloaded", style: TextStyle(
+              "Flutter reloadeds", style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 4,
                 fontSize: 15,
@@ -161,31 +161,31 @@ class Chatapp extends StatefulWidget {
 }
 
 class _ChatappState extends State<Chatapp> {
+
+  final _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return friendlychat();
+    return textcomposer(); }
+
+  void _handleSubmitted(String text) {
+    _textController.clear();
   }
-}
-
-class friendlychat extends StatelessWidget {
-  const friendlychat({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text( 'chart mode ')
+  Widget textcomposer() {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 40.0),
+        child: TextField(
+          controller:  _textController,
+          onSubmitted: _handleSubmitted,
+          decoration: InputDecoration.
+          collapsed(hintText: 'send a message'),
         ),
-        body: Center(
-          child: Addition(),
-        ),
-      ),
     );
   }
 }
+
+
+
 
 
 
