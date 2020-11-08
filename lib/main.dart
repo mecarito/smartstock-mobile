@@ -1,22 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData.dark(),
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Smartstock Kenya'),
+          title: Text('Msusi'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.search),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                scaffoldKey.currentState.showSnackBar(snackBar);
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.more_vert ),
+              tooltip: 'Next page',
+              onPressed: () {
+
+              },
+            ),
+          ],
         ),
         body: Center(
-          child: Addition(),
+          // child: Addition(),
+          child: Chatapp(),
+        ),
+
+        bottomNavigationBar: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+        icon: Icon(Icons.dashboard),
+        label: 'Bookings',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.person),
+        label: 'Account',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.settings),
+        label: 'Settings',
+      ),]
         ),
       ),
     );
@@ -40,6 +76,7 @@ class _AdditionState extends State<Addition> {
 
   @override
   Widget build(BuildContext context) {
+
     var fake = new Faker();
     // int count = 0;
     // int sum = count + 1;
@@ -64,16 +101,92 @@ class _AdditionState extends State<Addition> {
     );
   }
 
-  var container = Container(
-    child: Center(
-      child: Text("lorem ipsum"),
+
+  var container = Container( // grey box
+    child: Stack(
+      children: [
+        Positioned( // red box
+          child:  Container(
+            child: Text(
+              "Flutter reloaded", style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 4,
+                fontSize: 15,
+              fontWeight: FontWeight.w900,
+                backgroundColor: Colors.green
+            ),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.red[400],
+              // borderRadius: BorderRadius.all(
+              //   const Radius.circular(8),
+              // ),
+              shape: BoxShape.circle
+            ),
+            padding: EdgeInsets.all(34),
+
+
+          ),
+
+          left: 24,
+          top: 24,
+        ),
+      ],
     ),
 
-    width: 100%,
-    height: 100%,
-    color: Colors.blue
+    padding: EdgeInsets.all(34),
+    width: 320,
+    height: 240,
+    decoration: BoxDecoration(
+        color: Colors.blue[300],
+        borderRadius: BorderRadius.all(
+        const Radius.circular(30)
+      ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xcc000000),
+            offset: Offset(0, 2),
+            blurRadius: 4,
+          )
+        ]
+    ),
+
   );
+
 }
+
+class Chatapp extends StatefulWidget {
+  @override
+  _ChatappState createState() => _ChatappState();
+}
+
+class _ChatappState extends State<Chatapp> {
+  @override
+  Widget build(BuildContext context) {
+    return friendlychat();
+  }
+}
+
+class friendlychat extends StatelessWidget {
+  const friendlychat({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text( 'chart mode ')
+        ),
+        body: Center(
+          child: Addition(),
+        ),
+      ),
+    );
+  }
+}
+
 
 
 // class MyApp extends StatelessWidget {
