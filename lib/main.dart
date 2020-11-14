@@ -10,18 +10,23 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: Scaffold(
           appBar: AppBar(
+            
         leading: IconButton(
           icon: Icon(Icons.menu),
           tooltip: 'Navigation menu',
           onPressed: null,
         ),
         title: Text('Example title'),
+        backgroundColor: Colors.red,
+        elevation: 80,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
             tooltip: 'Search',
             onPressed: null,
           ),
+          Text('eat'),
+          Icon(Icons.more_vert)
         ],
       ),
       // body is the majority of the screen.
