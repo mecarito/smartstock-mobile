@@ -9,36 +9,48 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData.dark(),
       title: 'Material App',
       home: Scaffold(
-          appBar: AppBar(
-            
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: null,
-        ),
-        title: Text('Example title'),
-        backgroundColor: Colors.red,
-        elevation: 80,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            tooltip: 'Search',
+        
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.menu),
+            tooltip: 'Navigation menu',
             onPressed: null,
           ),
-          Text('eat'),
-          Icon(Icons.more_vert)
-        ],
-      ),
-      // body is the majority of the screen.
-      body: Center(
-        child: Text('Hello, world!'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Add', // used by assistive technologies
-        child: Icon(Icons.add),
-        onPressed: null,
-      ),
-     
+          title: Text('Example title'),
+          
+          backgroundColor: Colors.red,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              tooltip: 'Search',
+              onPressed: null,
+            ),
+            Icon(Icons.more_vert)
+          ],
+        ),
+        // body is the majority of the screen.
+        body: Center(child: Counter()),
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Add', // used by assistive technologies
+          child: Icon(Icons.add),
+          onPressed: null,
+        ),
+        bottomNavigationBar:
+            BottomNavigationBar(backgroundColor: Colors.amber, items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard),
+              label: 'Dashboard',
+              backgroundColor: Colors.green),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: 'History',
+              backgroundColor: Colors.green),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+              backgroundColor: Colors.green)
+        ]),
+
         drawer: Center(
           child: Text('i am comming'),
         ),
@@ -47,24 +59,32 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Some extends StatelessWidget {
+class Counter extends StatefulWidget {
+  Counter({Key key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-          children: [
-            IconButton(
-                icon: Icon(Icons.dashboard),
-                tooltip: 'dashboard',
-                onPressed: null),
-          ],
-        ),
-        decoration: BoxDecoration(
-            color: Colors.lightBlue,
-            borderRadius: BorderRadius.all(Radius.circular(25))),
-        width: 120,
-        height: 120,
-        padding: EdgeInsets.all(30));
-  }
+  _CounterState createState() => _CounterState();
 }
 
+class _CounterState extends State<Counter> {
+  int count = 0;
+
+  void addition() {
+    setState(() {
+      ++count;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Total amount: $count'),
+        ElevatedButton(
+          onPressed: addition,
+          child: Icon(Icons.add),
+        )
+      ],
+    );
+  }
+}
