@@ -9,16 +9,18 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData.dark(),
       title: 'Material App',
       home: Scaffold(
-        
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: 'Navigation menu',
-            onPressed: null,
+          // leading: IconButton(
+          //   icon: Icon(Icons.menu),
+          //   tooltip: 'Navigation menu',
+          //   onPressed: null,
+          // ),
+          title: Text(
+            'First app',
+            style: TextStyle(color: Colors.black),
           ),
-          title: Text('Example title'),
-          
-          backgroundColor: Colors.red,
+
+          backgroundColor: Colors.amberAccent,
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
           onPressed: null,
         ),
         bottomNavigationBar:
-            BottomNavigationBar(backgroundColor: Colors.amber, items: [
+            BottomNavigationBar(backgroundColor: Colors.amberAccent, items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.dashboard),
               label: 'Dashboard',
@@ -52,8 +54,107 @@ class MyApp extends StatelessWidget {
         ]),
 
         drawer: Center(
-          child: Text('i am comming'),
-        ),
+            child: MaterialApp(
+          title: 'Material App',
+          home: Scaffold(
+            appBar: AppBar(
+              title: Text('List tile'),
+            ),
+            body: Center(
+              child: Transform(
+                  transform: Matrix4.skewY(3),
+                  child: ListView(
+                    children: [
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 1'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                          leading: Icon(Icons.person),
+                          title: Text('widget of the week 2'),
+                          subtitle: Text('56'),
+                          trailing: Icon(Icons.select_all),
+                          onTap: () => print('i was pressed'),
+                          enabled: true),
+                      ListTile(
+                        leading: Icon(Icons.person),
+                        title: Text('widget of the recent week'),
+                        subtitle: Text('56'),
+                        trailing: Icon(Icons.select_all),
+                        onTap: () => print('i was pressed'),
+                        selected: true,
+                      ),
+                    ],
+                  )),
+            ),
+          ),
+        )),
       ),
     );
   }
@@ -75,15 +176,24 @@ class _CounterState extends State<Counter> {
     });
   }
 
+//  var stars = Container(
+    
+//   );
+
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.max,
       children: [
+     Image.network('https://cdn.pixabay.com/photo/2020/11/13/20/20/giraffe-5739828__340.jpg'),
+
         Text('Total amount: $count'),
         ElevatedButton(
           onPressed: addition,
           child: Icon(Icons.add),
-        )
+        ),
+        
       ],
     );
   }
