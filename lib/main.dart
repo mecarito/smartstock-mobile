@@ -186,8 +186,7 @@ class _CounterState extends State<Counter> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.max,
       children: [
-     Image.network('https://cdn.pixabay.com/photo/2020/11/13/20/20/giraffe-5739828__340.jpg'),
-
+        Image.network('https://cdn.pixabay.com/photo/2020/11/13/20/20/giraffe-5739828__340.jpg'),
         Text('Total amount: $count'),
         ElevatedButton(
           onPressed: addition,
